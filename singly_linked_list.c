@@ -14,6 +14,20 @@ struct Node* createNode(int newData)
     newNode -> next = NULL;
 };
 
+
+//printing the linked list
+void printing (struct Node* head){
+    struct Node *curr = head;
+    while (curr != NULL)
+    {
+        printf("%d", curr->data);
+        curr = curr->next;
+    }
+    printf("\n");
+}
+
+
+//forward traversal
 void ForwardTraversal(struct Node* head){
     struct Node *curr = head;
     while (curr != NULL){
@@ -22,6 +36,15 @@ void ForwardTraversal(struct Node* head){
     }
     printf("\n");
 }
+
+
+//insetion in the end
+struct Node* insertion_end(struct Node* head, int data)
+{
+    struct Node* new_node = createNode(data);
+    new_node -> next = head;
+    return new_node;
+};
 
 
 int main(){
@@ -44,6 +67,12 @@ int main(){
     seventh -> next = eigth;
     eigth -> next = ninth;
 
-    printf("after traversal: ");
-    ForwardTraversal(head);
+    // printf("after traversal: ");
+    // ForwardTraversal(head);
+
+    printf("before insertion: ");
+    printing(head);
+    head = insertion_end(head, 89);
+    printf("after insertion: ");
+    printing(head);
 }

@@ -14,7 +14,7 @@ struct Node *createNode(int new_data){
     newNode->prev = NULL;
     return newNode;
 }
-
+//printing the linked list
 void printing (struct Node* head){
     struct Node *curr = head;
     while (curr != NULL)
