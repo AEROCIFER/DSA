@@ -117,6 +117,9 @@ int main(){
     struct Node* second = createNode(2);
     struct Node* third = createNode(3);
     struct Node* fourth = createNode(4);
+    struct Node* fifth = createNode(5);
+    struct Node* sixth = createNode(6);
+    struct Node* seventh = createNode(7);
 
     head->next = second;
     second->prev= head;
@@ -132,11 +135,15 @@ int main(){
     // reverseTraversal(fourth);
     printf("before insertion: ");
     printing(head);
-    int pos = 3;
-    int data = 69;
+    int pos;
+    int data;
+    printf("Enter the data to be inserted: ");
+    scanf("%d", &data);
+    printf("Enter the position in which the data to be inserted: ");
+    scanf("%d", &pos);
     head = insertion_given_node(head, pos, data);
     printf("after insertion: ");
     printing(head); 
     return 0;
-        
+
 }
