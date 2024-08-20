@@ -72,6 +72,45 @@ struct Node* insertion_end(struct Node* head, int data)
     return head;
 };
 
+//insertion at a given node
+
+struct Node* insertion_given_node(struct Node* head, int pos, int data)
+{
+    struct Node* new_data = createNode(data);
+    if (pos == 1){
+        new_data -> next = head;
+        if (head != NULL){
+            head -> prev = new_data;
+        }
+
+        head = new_data;
+        return head;
+    }
+
+    struct Node* curr = head;
+
+    for (int i = 1; i < pos -1 && curr != NULL;i++){
+        curr = curr-> next;
+    }
+
+    if (curr == NULL){
+        printf("position is out of bounds");
+        free(new_data);
+        return head;
+    }
+
+    new_data -> prev = curr;
+    new_data -> next = curr -> next;
+    curr -> next = new_data;
+    if (new_data -> next != NULL){
+        new_data -> next -> prev = new_data;
+    }
+
+    return head;
+
+};
+
+
 
 int main(){
     struct Node* head = createNode(1);
@@ -93,9 +132,11 @@ int main(){
     // reverseTraversal(fourth);
     printf("before insertion: ");
     printing(head);
-
-    head = insertion_end(head, 7);
+    int pos = 3;
+    int data = 69;
+    head = insertion_given_node(head, pos, data);
     printf("after insertion: ");
     printing(head); 
     return 0;
+        
 }
