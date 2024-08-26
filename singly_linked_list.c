@@ -12,7 +12,8 @@ struct Node* createNode(int newData)
     struct Node *newNode = malloc(sizeof(struct Node));
     newNode -> data = newData;
     newNode -> next = NULL;
-};
+    return newNode;
+}
 
 
 //printing the linked list
@@ -40,6 +41,23 @@ void ForwardTraversal(struct Node* head){
 
 //insetion in the end
 struct Node* insertion_end(struct Node* head, int data)
+{
+    struct Node* new_node = createNode(data);
+    if (head == NULL){
+        return new_node;
+    }
+    struct Node* last = head;
+    while (last -> next != head){
+        last = last-> next;
+    }
+    last -> next = new_node;
+    return head;   
+}
+
+
+
+//insetion in the beginning
+struct Node* insertion_begin(struct Node* head, int data)
 {
     struct Node* new_node = createNode(data);
     new_node -> next = head;
@@ -72,7 +90,8 @@ int main(){
 
     printf("before insertion: ");
     printing(head);
-    head = insertion_end(head, 89);
+    int data = 89;
     printf("after insertion: ");
+    head = insertion_end(head, data);
     printing(head);
 }

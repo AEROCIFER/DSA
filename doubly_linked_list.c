@@ -135,15 +135,47 @@ int main(){
     // reverseTraversal(fourth);
     printf("before insertion: ");
     printing(head);
-    int pos;
-    int data;
+    int pos,data, choice;
     printf("Enter the data to be inserted: ");
     scanf("%d", &data);
-    printf("Enter the position in which the data to be inserted: ");
-    scanf("%d", &pos);
-    head = insertion_given_node(head, pos, data);
-    printf("after insertion: ");
-    printing(head); 
+    // printf("Enter the position in which the data to be inserted: ");
+    // scanf("%d", &pos);
+    // head = insertion_given_node(head, pos, data);
+    // printf("after insertion: ");
+    // printing(head); 
+    
+    
+    //using switch case for options
+    printf("For insertion in the beginning choose 1, For insertion in the end choose 2, For insertion in the desired position choose 3");
+    printf("\nEnter the choice: ");
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+        //insertion in the beginning
+        head = insertion_beginning(head, data);
+        printf("After insertion: ");
+        printing(head);       
+        break;
+    case 2:
+        //insertion in the end
+        head = insertion_end(head, data);
+        printf("After insertion: ");
+        printing(head);
+        break;
+    case 3:
+        //insertion in the desired position
+        printf("Enter the position in which the data will be inserted: ");
+        scanf("%d", &pos);
+        head = insertion_given_node(head, pos, data);
+        printf("After insertion: ");
+        printing(head);
+        break;
+    default:
+        if (choice != 1 && choice != 2 && choice!= 3)
+            printf("Invalid choice.");
+        break;
+    }
     return 0;
 
 }
